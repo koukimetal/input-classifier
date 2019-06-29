@@ -1,0 +1,29 @@
+{
+  "name": "input-classifier",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:koukimetal/input-classifier.git",
+  "author": "koukimetal <email@example.com>",
+  "license": "MIT",
+  "scripts": {
+    "watch": "tsc -w",
+    "lint": "eslint './src/**/*.ts'",
+    "lint:fix": "eslint --fix './src/**/*.ts'"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/parser": "^1.10.2",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^1.2.1",
+    "csv-parse": "^4.4.3",
+    "fs-extra": "^8.0.1",
+    "iconv-lite": "^0.4.24"
+  }
+}
