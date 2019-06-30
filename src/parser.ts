@@ -3,17 +3,17 @@ import path from 'path';
 import { removeIfExist, HEADER, readLines } from "./common";
 
 const shindoMap: {[k: string]: number} = {
-    '1': 1,
-    '2': 2,
-    '3': 3,
-    '4': 4,
-    '5': 5.5,
-    '6': 6.5,
-    '7': 7,
-    'A': 5.25,
-    'B': 5.75,
-    'C': 6.25,
-    'D': 6.75
+    '1': 10,
+    '2': 20,
+    '3': 30,
+    '4': 40,
+    'A': 52, // 5-
+    '5': 55, // 5
+    'B': 57, // 5+
+    'C': 62, // 6-
+    '6': 65, // 6
+    'D': 67, // 6+
+    '7': 70, // 7
 }
 
 const fileLoad = async (readFilePath: string, writeFilePath: string) => {
@@ -32,8 +32,8 @@ const fileLoad = async (readFilePath: string, writeFilePath: string) => {
 
         // shinoh
         const timestamp = line.substring(1,15);
-        const latitude = line.substring(21, 24) + '.' + line.substring(24, 28);
-        const longitude = line.substring(32, 36) + '.' + line.substring(36, 40);
+        const latitude = (line.substring(21, 24) + '.' + line.substring(24, 28)).trim();
+        const longitude = (line.substring(32, 36) + '.' + line.substring(36, 40)).trim();
         const depth = parseInt(line.substring(40, 44));
         const magnitude = parseInt(line.substring(52, 54));
         const magnitudeType = line.substring(54, 55);
@@ -48,7 +48,7 @@ const fileLoad = async (readFilePath: string, writeFilePath: string) => {
         if (magnitudeType.toLocaleLowerCase() !== 'v') {
             continue;
         }
-        if (maxShindo > 5) {
+        if (maxShindo >= 50) {
             console.log(maxShindo);
         }
 

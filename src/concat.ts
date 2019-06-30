@@ -22,8 +22,8 @@ const main = async () => {
     const output = fs.createWriteStream(writeFilePath, {
         flags: 'a' 
     });
-    output.write(HEADER.join(',') + '\n');
-    console.log(files);
+    output.write(HEADER.join(',') + '\n'); // not sure why it can behave like sync
+    // console.log(files);
     await Promise.all(
         files.map(async file => fileLoad(
             path.resolve('resources/csv', file), output))
@@ -35,36 +35,3 @@ const main = async () => {
 (async () => {
     await main();
 })();
-
-
-
-// const getLines = async (readFilePath: string) => {
-//     const buf = await fs.readFile(readFilePath, 'utf8');
-//     console.log(buf.toString());
-//     const contents = buf.toString().split('\n').slice(1);
-//     return contents;
-// }
-
-// const main = async () => {
-//     const files = await fs.readdir('resources/csv');
-//     const writeFilePath = 'resources/final.csv';
-
-//     const finalLines = [];
-//     finalLines.push( HEADER.join(','));
-
-//     await removeIfExist(writeFilePath);
-//     await fs.appendFile(writeFilePath,+ '\n');
-//     for (let i = 0; i < files.length; i++) {
-//         const file = files[i];
-//         console.log(file);
-//         const lines = await getLines(
-//             path.resolve('resources/csv', file));
-//         finalLines.push(...lines);
-//     }
-    
-//     await fs.writeFile(writeFilePath, finalLines.join('\n'));
-// }
-
-// (async () => {
-//     await main();
-// })();
